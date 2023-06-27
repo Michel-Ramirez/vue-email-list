@@ -1,6 +1,5 @@
 console.log('JS ok')
 
-const point = axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
 
 const app = Vue.createApp({
     data() {
@@ -11,10 +10,13 @@ const app = Vue.createApp({
     },
     methods: {
         getEmail() {
-
+            
             for (let i = 0; i < items; i++){
-                const mail = point.data.response;
-                this.mails.push(mail);
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                .then(res => {
+                    const mail = res.data.response;
+                    this.mails.push(mail);
+                })
             }
 
         },
